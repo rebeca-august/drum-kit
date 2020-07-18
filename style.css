@@ -12,7 +12,7 @@ body{
     padding: 30px;
     box-sizing: border-box;
     font-family: sans-serif;
-    color: whitesmoke; 
+    color: whitesmoke;
 }
 
 body::before{
