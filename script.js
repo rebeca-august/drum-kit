@@ -1,14 +1,32 @@
+function getCorrectDrum(e) {
+    if (e.keyCode) {
+        return document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    }
+    return e.target.closest(".key");
+}
+
+const subTitle = document.querySelector(".sub-title");
+let counter = 0;
+
 function playSound(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    if (!audio) return;
+    const drum = getCorrectDrum(e);
+
+    if (!drum) return;
+
+    const key = drum.dataset.key;
+    const audio = document.querySelector(`audio[data-key="${key}"]`);
 
     audio.currentTime = 0;
     audio.play();
 
-    key.classList.add("playing");
-};
+    drum.classList.add("playing");
 
+    counter++;
+
+    if (counter === 3) {
+        subTitle.classList.add("slide-in");
+    }
+};
 
 function removeTransition(e) {
     if (e.propertyName !== "transform")
@@ -18,6 +36,10 @@ function removeTransition(e) {
 
 
 const keys = document.querySelectorAll(".key");
-keys.forEach(key => key.addEventListener("transitionend", removeTransition));
+keys.forEach(key => {
+    key.addEventListener("transitionend", removeTransition);
+    key.addEventListener("touchstart", playSound);
+    key.addEventListener("mousedown", playSound);
+});
 
 window.addEventListener("keydown", playSound);
