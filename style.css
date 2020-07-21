@@ -30,7 +30,6 @@ body::before{
 
 .title, .sub-title{
     align-self: center;
-    /* font-size: clamp(0.5rem, 20vw, 2.5rem); */
     font-size: 40px;
     margin: 0;
     background-color: #e57373b8;
@@ -44,8 +43,7 @@ body::before{
 }
 
 .sub-title{
-    align-self: flex-end;
-    transform: translateX(200%);
+    transform: translateX(400%);
 }
 
 .slide-in{
@@ -60,7 +58,6 @@ body::before{
     align-items: center;
     margin: 5% 0;
     width: min(100%, 500px);
-    /* margin: 7% 30%; */
 }
 
 
