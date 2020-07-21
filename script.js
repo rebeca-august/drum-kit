@@ -23,7 +23,7 @@ function playSound(e) {
 
     counter++;
 
-    if (counter === 3) {
+    if (counter === 4) {
         subTitle.classList.add("slide-in");
     }
 };
@@ -39,7 +39,7 @@ const keys = document.querySelectorAll(".key");
 keys.forEach(key => {
     key.addEventListener("transitionend", removeTransition);
     key.addEventListener("touchstart", playSound);
-    key.addEventListener("mousedown", playSound);
+    // key.addEventListener("mousedown", playSound);
 });
 
 window.addEventListener("keydown", playSound);
